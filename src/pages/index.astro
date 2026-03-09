@@ -1,0 +1,20 @@
+﻿---
+const fallbackPath = '/es/';
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MLABS</title>
+    <meta http-equiv="refresh" content={`0;url=${fallbackPath}`} />
+    <link rel="canonical" href={fallbackPath} />
+  </head>
+  <body style="background:#f8fafc;color:#0f172a;font-family:Inter,system-ui,sans-serif;">
+    <p style="padding:24px;">Redirecting to <a style="color:#3b82f6;" href={fallbackPath}>{fallbackPath}</a></p>
+    <script>
+      window.location.replace('/es/');
+    </script>
+  </body>
+</html>

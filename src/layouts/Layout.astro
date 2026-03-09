@@ -1,0 +1,77 @@
+﻿---
+import '../styles/global.css';
+import AnimationRuntime from '../components/AnimationRuntime.tsx';
+import LanguageSwitcher from '../components/LanguageSwitcher.astro';
+import type { Lang } from '../i18n/content';
+
+interface Props {
+  lang: Lang;
+  title: string;
+  description: string;
+  languageLabel: string;
+}
+
+const { lang, title, description, languageLabel } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang} class="h-full scroll-smooth antialiased">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="alternate" hreflang="es" href="/es/" />
+    <link rel="alternate" hreflang="en" href="/en/" />
+    <link rel="alternate" hreflang="x-default" href="/es/" />
+  </head>
+
+  <body class="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 text-slate-900">
+    <!-- Base gradient layers -->
+    <div class="pointer-events-none fixed inset-0 -z-50 bg-gradient-to-br from-blue-50/30 via-white to-purple-50/30 opacity-70"></div>
+    <div class="pointer-events-none fixed inset-0 -z-40 bg-gradient-to-br from-blue-50/40 via-transparent to-purple-50/40"></div>
+    
+    <!-- Animated grid pattern -->
+    <div class="pointer-events-none fixed inset-0 -z-35 opacity-50" style="background-image: linear-gradient(rgba(67, 56, 202, 0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(67, 56, 202, 0.2) 1px, transparent 1px); background-size: 50px 50px; animation: grid-move 20s linear infinite;"></div>
+    
+    <!-- Radial gradient overlays -->
+    <div class="pointer-events-none fixed inset-0 -z-30 opacity-60" style="background-image: radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.25) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.22) 0%, transparent 50%), radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.2) 0%, transparent 60%)"></div>
+    
+    <!-- Animated light beams -->
+    <div class="pointer-events-none fixed inset-0 -z-25 opacity-50">
+      <div class="absolute inset-0 bg-gradient-to-r from-transparent via-blue-400/25 to-transparent" style="animation: slide-beam 8s ease-in-out infinite;"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-purple-400/20 to-transparent" style="animation: slide-beam-vertical 10s ease-in-out infinite; animation-delay: 2s;"></div>
+    </div>
+    
+    <!-- Aurora blobs layer -->
+    <div class="pointer-events-none fixed inset-0 -z-20 opacity-100">
+      <div class="aurora-blob absolute left-[-10%] top-[-15%] h-[40rem] w-[40rem] rounded-full bg-gradient-to-br from-blue-500/45 to-transparent blur-[100px] animate-blob"></div>
+      <div class="aurora-blob aurora-blob-slow absolute bottom-[-10%] right-[-5%] h-[35rem] w-[35rem] rounded-full bg-gradient-to-br from-purple-500/40 to-transparent blur-[100px] animate-blob-slow"></div>
+      <div class="aurora-blob absolute left-[40%] top-[30%] h-[25rem] w-[25rem] rounded-full bg-gradient-to-br from-pink-500/35 to-transparent blur-[100px] animate-blob" style="animation-delay: 2s"></div>
+      <div class="aurora-blob absolute right-[10%] bottom-[20%] h-[30rem] w-[30rem] rounded-full bg-gradient-to-br from-indigo-500/40 to-transparent blur-[100px] animate-float-rotate" style="animation-delay: 4s"></div>
+      <div class="aurora-blob absolute top-[20%] right-[25%] h-[35rem] w-[35rem] rounded-full bg-gradient-to-br from-cyan-500/35 to-transparent blur-[130px] animate-blob-slow" style="animation-delay: 1s; animation-duration: 14s;"></div>
+      <div class="aurora-blob absolute bottom-[15%] left-[20%] h-[28rem] w-[28rem] rounded-full bg-gradient-to-br from-blue-500/40 to-transparent blur-[100px] animate-float-up" style="animation-delay: 3s;"></div>
+    </div>
+    
+    <!-- Floating particles -->
+    <div class="pointer-events-none fixed inset-0 -z-15">
+      <div class="absolute top-[15%] left-[10%] h-1.5 w-1.5 rounded-full bg-blue-600/70 animate-float-rotate" style="animation-duration: 15s;"></div>
+      <div class="absolute top-[35%] right-[15%] h-2 w-2 rounded-full bg-purple-600/60 animate-float-down" style="animation-duration: 18s;"></div>
+      <div class="absolute bottom-[25%] left-[15%] h-1.5 w-1.5 rounded-full bg-indigo-600/65 animate-float-up" style="animation-duration: 16s; animation-delay: 2s;"></div>
+      <div class="absolute top-[50%] right-[8%] h-2 w-2 rounded-full bg-cyan-600/60 animate-blob" style="animation-duration: 20s; animation-delay: 4s;"></div>
+      <div class="absolute bottom-[40%] right-[12%] h-1.5 w-1.5 rounded-full bg-blue-600/65 animate-float-rotate" style="animation-duration: 17s; animation-delay: 1s;"></div>
+    </div>
+
+    <LanguageSwitcher lang={lang} label={languageLabel} />
+
+    <main id="main-content"><slot /></main>
+
+    <AnimationRuntime client:load />
+  </body>
+</html>

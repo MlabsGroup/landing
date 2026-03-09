@@ -1,0 +1,163 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeaderNav from '../../components/HeaderNav.astro';
+import HeroSection from '../../components/HeroSection.astro';
+import ShowcaseSection from '../../components/ShowcaseSection.astro';
+import HoldingCards from '../../components/HoldingCards.astro';
+import { LANGS, copy, isValidLang, type Lang } from '../../i18n/content';
+
+export const prerender = true;
+
+export const getStaticPaths = () => {
+  return LANGS.map((lang) => ({ params: { lang } }));
+};
+
+const rawLang = Astro.params.lang ?? 'es';
+
+if (!isValidLang(rawLang)) {
+  throw new Error(`Unsupported locale: ${rawLang}`);
+}
+
+const lang = rawLang as Lang;
+const t = copy[lang];
+---
+
+<Layout lang={lang} title={t.siteTitle} description={t.siteDescription} languageLabel={t.languageLabel}>
+  <HeaderNav
+    lang={lang}
+    navVision={t.navVision}
+    navHow={t.navHow}
+    navOpportunities={t.navOpportunities}
+    navCredibility={t.navCredibility}
+    navContact={t.navContact}
+    ctaLabel={t.headerCta}
+  />
+
+  <HeroSection
+    eyebrow={t.eyebrow}
+    title={t.heroTitle}
+    subtitle={t.heroSubtitle}
+    primaryButton={t.heroPrimaryButton}
+    secondaryButton={t.heroSecondaryButton}
+    visualAlt={t.heroVisualAlt}
+  />
+
+  <section id="vision" class="py-24 md:py-28" data-section>
+    <div class="mx-auto max-w-7xl px-6 md:px-10">
+      <div
+        class="glass-premium with-border-beam relative overflow-hidden rounded-3xl border border-blue-200/50 p-8 shadow-glow-lg md:p-12"
+        data-reveal
+      >
+        <div class="pointer-events-none absolute -right-10 -top-10 h-36 w-36 rounded-full bg-white/20 blur-3xl"></div>
+        <p class="section-kicker">{t.visionTitle}</p>
+        <h2 class="section-title mt-4 max-w-4xl">{t.visionText}</h2>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="py-24 md:py-28" data-section>
+    <div class="mx-auto max-w-7xl px-6 md:px-10">
+      <div class="max-w-3xl" data-reveal>
+        <p class="section-kicker">MLABS Platform</p>
+        <h2 class="section-title mt-4">{t.howTitle}</h2>
+      </div>
+
+      <ol class="mt-12 grid grid-cols-1 gap-5 md:grid-cols-3" role="list">
+        {
+          t.howItems.map((item, index) => (
+            <li
+              class="glass-card with-border-beam rounded-2xl border border-blue-200/40 p-7 text-sm leading-relaxed text-slate-700 shadow-glow md:text-base transition-all duration-300 hover:shadow-glow-lg"
+              data-reveal
+              data-tilt
+            >
+              <span class="mb-4 inline-flex h-8 w-8 items-center justify-center rounded-full border border-blue-300/50 bg-blue-50 text-xs font-medium text-blue-600">
+                {`0${index + 1}`}
+              </span>
+              <p>{item}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <ShowcaseSection
+    kicker={t.showcaseKicker}
+    title={t.showcaseTitle}
+    text={t.showcaseText}
+    points={t.showcasePoints}
+    imageAlt={t.showcaseImageAlt}
+  />
+
+  <HoldingCards
+    sectionId="opportunities"
+    title={t.holdingTitle}
+    intro={t.holdingIntro}
+    acquisitionTitle={t.acquisitionTitle}
+    acquisitionText={t.acquisitionText}
+    acquisitionButton={t.acquisitionButton}
+    juniorTitle={t.juniorTitle}
+    juniorText={t.juniorText}
+    juniorButton={t.juniorButton}
+  />
+
+  <section class="py-24 md:py-28" data-section>
+    <div class="mx-auto max-w-7xl px-6 md:px-10">
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+        <article class="glass-card rounded-2xl border border-white/20 p-7 shadow-[0_16px_55px_rgba(0,0,0,0.42)]" data-reveal data-tilt>
+          <h3 class="text-xl font-semibold text-white">{t.buildersTitle}</h3>
+          <p class="section-copy mt-4 text-sm md:text-base">{t.buildersText}</p>
+        </article>
+        <article class="glass-card rounded-2xl border border-white/20 p-7 shadow-[0_16px_55px_rgba(0,0,0,0.42)]" data-reveal data-tilt>
+          <h3 class="text-xl font-semibold text-white">{t.partnersTitle}</h3>
+          <p class="section-copy mt-4 text-sm md:text-base">{t.partnersText}</p>
+        </article>
+        <article class="glass-card rounded-2xl border border-white/20 p-7 shadow-[0_16px_55px_rgba(0,0,0,0.42)]" data-reveal data-tilt>
+          <h3 class="text-xl font-semibold text-white">{t.investorsTitle}</h3>
+          <p class="section-copy mt-4 text-sm md:text-base">{t.investorsText}</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="credibility" class="py-24 md:py-28" data-section>
+    <div class="mx-auto max-w-7xl px-6 md:px-10">
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-12">
+        <div class="md:col-span-5" data-reveal>
+          <p class="section-kicker">MLABS Trust Layer</p>
+          <h2 class="section-title mt-4">{t.credibilityTitle}</h2>
+        </div>
+        <ul class="space-y-4 md:col-span-7" role="list">
+          {
+            t.credibilityItems.map((item) => (
+              <li
+                class="glass-card rounded-xl border border-blue-200/40 p-5 text-sm text-slate-700 shadow-glow md:text-base transition-all duration-300 hover:shadow-glow-lg"
+                data-reveal
+              >
+                {item}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-24 md:py-32" data-section>
+    <div
+      class="glass-card with-border-beam mx-auto max-w-4xl rounded-3xl border border-white/20 px-6 py-14 text-center shadow-[0_22px_74px_rgba(0,0,0,0.45)] md:px-10"
+      data-reveal
+    >
+      <p class="section-kicker">MLABS</p>
+      <h2 class="section-title mt-4">{t.ctaTitle}</h2>
+      <p class="section-copy mx-auto mt-6 max-w-2xl">{t.ctaText}</p>
+      <a
+        href="mailto:tech@mlabsgroup.com?subject=MLABS%20-%20Contacto%20estrategico"
+        class="mt-10 inline-flex items-center rounded-full border border-white/20 bg-white px-7 py-3 text-sm font-semibold uppercase tracking-[0.12em] text-black transition hover:bg-white/92 focus-visible:ring-2 focus-visible:ring-white/85"
+        aria-label="Enviar correo para iniciar conversacion con MLABS"
+      >
+        {t.ctaButton}
+      </a>
+    </div>
+  </section>
+</Layout>

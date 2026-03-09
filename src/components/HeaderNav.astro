@@ -1,0 +1,52 @@
+---
+import MlabsLogo from './MlabsLogo.astro';
+import type { Lang } from '../i18n/content';
+
+interface Props {
+  lang: Lang;
+  navVision: string;
+  navHow: string;
+  navOpportunities: string;
+  navCredibility: string;
+  navContact: string;
+  ctaLabel: string;
+}
+
+const { lang, navVision, navHow, navOpportunities, navCredibility, navContact, ctaLabel } = Astro.props;
+const homePath = `/${lang}/`;
+---
+
+<header class="fixed left-1/2 top-4 z-[60] w-[min(1180px,calc(100%-1.25rem))] -translate-x-1/2" data-site-header>
+    <div class="glass-nav rounded-3xl border border-blue-200/40 px-4 py-3 shadow-glow md:px-6 shimmer-effect">
+
+    <div class="flex items-center justify-between gap-4">
+      <a href={homePath} aria-label="Ir al inicio de MLABS" class="inline-flex items-center rounded-2xl px-1 py-1">
+        <MlabsLogo />
+      </a>
+
+      <nav class="hidden items-center gap-1 md:flex" aria-label="Navegacion principal">
+        <a href="#vision" class="nav-link" data-nav-link="vision">{navVision}</a>
+        <a href="#how" class="nav-link" data-nav-link="how">{navHow}</a>
+        <a href="#opportunities" class="nav-link" data-nav-link="opportunities">{navOpportunities}</a>
+        <a href="#credibility" class="nav-link" data-nav-link="credibility">{navCredibility}</a>
+        <a href="#contact" class="nav-link" data-nav-link="contact">{navContact}</a>
+      </nav>
+
+      <a
+        href="#contact"
+        class="inline-flex items-center rounded-full border border-blue-300 bg-blue-600 px-4 py-2 text-xs font-semibold uppercase tracking-[0.15em] text-white transition hover:bg-blue-700"
+        aria-label="Ir a la seccion de contacto"
+      >
+        {ctaLabel}
+      </a>
+    </div>
+
+    <nav class="mt-3 flex gap-2 overflow-x-auto pb-1 md:hidden" aria-label="Navegacion principal movil">
+      <a href="#vision" class="nav-link nav-link-mobile" data-nav-link="vision">{navVision}</a>
+      <a href="#how" class="nav-link nav-link-mobile" data-nav-link="how">{navHow}</a>
+      <a href="#opportunities" class="nav-link nav-link-mobile" data-nav-link="opportunities">{navOpportunities}</a>
+      <a href="#credibility" class="nav-link nav-link-mobile" data-nav-link="credibility">{navCredibility}</a>
+      <a href="#contact" class="nav-link nav-link-mobile" data-nav-link="contact">{navContact}</a>
+    </nav>
+  </div>
+</header>

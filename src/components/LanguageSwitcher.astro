@@ -1,0 +1,50 @@
+﻿---
+import type { Lang } from '../i18n/content';
+
+interface Props {
+  lang: Lang;
+  label: string;
+}
+
+const { lang, label } = Astro.props;
+---
+
+<nav
+  aria-label={label}
+  class="fixed bottom-4 right-4 z-50 rounded-full border border-slate-300 bg-white/80 p-1.5 shadow-[0_8px_32px_rgba(59,130,246,0.15)] backdrop-blur-xl md:bottom-8 md:right-8"
+>
+  <ul class="flex items-center gap-1" role="list">
+    <li>
+      <a
+        href="/es/"
+        lang="es"
+        aria-label="Cambiar idioma a espanol"
+        aria-current={lang === 'es' ? 'page' : undefined}
+        class:list={[
+          'inline-flex min-w-12 items-center justify-center rounded-full px-3 py-1.5 text-xs font-medium uppercase tracking-[0.16em] transition',
+          lang === 'es'
+            ? 'bg-blue-600 text-white'
+            : 'text-slate-700 hover:bg-blue-100 hover:text-blue-600 focus-visible:ring-2 focus-visible:ring-blue-400',
+        ]}
+      >
+        ES
+      </a>
+    </li>
+    <li>
+      <a
+        href="/en/"
+        lang="en"
+        aria-label="Switch language to English"
+        aria-current={lang === 'en' ? 'page' : undefined}
+        class:list={[
+          'inline-flex min-w-12 items-center justify-center rounded-full px-3 py-1.5 text-xs font-medium uppercase tracking-[0.16em] transition',
+          lang === 'en'
+            ? 'bg-blue-600 text-white'
+            : 'text-slate-700 hover:bg-blue-100 hover:text-blue-600 focus-visible:ring-2 focus-visible:ring-blue-400',
+        ]}
+      >
+        EN
+      </a>
+    </li>
+  </ul>
+</nav>
