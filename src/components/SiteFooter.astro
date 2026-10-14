@@ -1,0 +1,43 @@
+---
+import { company, copy, type Lang } from '../i18n/content';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = copy[lang];
+const home = `/${lang}/`;
+const legal = `/${lang}/legal/`;
+---
+
+<footer class="site-footer dark">
+  <div class="wrap">
+    <div class="footer-cols">
+      <div class="footer-col">
+        <div class="kicker">MLABS</div>
+        <a href={`${home}#vision`}>{t.nav.vision}</a>
+        <a href={`${home}#nosotros`}>{t.nav.about}</a>
+        <a href={`${home}#portfolio`}>{t.nav.portfolio}</a>
+      </div>
+      <div class="footer-col">
+        <div class="kicker">{t.footerWork}</div>
+        <a href={`${home}#formulario`} data-tab="investor">{t.footerInvestors}</a>
+        <a href={`${home}#formulario`} data-tab="founder">{t.footerFounders}</a>
+        <a href={`${home}#formulario`} data-tab="sales">{t.footerSales}</a>
+      </div>
+      <address class="footer-col">
+        <div class="kicker">{t.footerContact}</div>
+        <span>{company.legalName}</span>
+        <span>{company.street}<br />{company.postalCode} {company.city}, {t.countryName}</span>
+        <a href={company.phoneHref}>{company.phone}</a>
+        <a href={`mailto:${company.email}`}>{company.email}</a>
+      </address>
+    </div>
+    <div class="footer-word" aria-hidden="true">MLABS</div>
+    <div class="footer-bottom">
+      <span>© {new Date().getFullYear()} {company.legalName} · {company.city}, {t.countryName}</span>
+      <span><a href={`${legal}#aviso-legal`}>{t.legalLink}</a> · <a href={`${legal}#privacidad`}>{t.privacyLink}</a></span>
+    </div>
+  </div>
+</footer>

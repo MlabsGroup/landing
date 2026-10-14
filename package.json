@@ -6,21 +6,15 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "test": "playwright test"
   },
   "dependencies": {
-    "astro": "^4.16.18",
-    "@astrojs/preact": "^3.5.4",
-    "@astrojs/tailwind": "^5.1.2",
-    "gsap": "^3.12.5",
-    "lenis": "^1.1.20",
-    "preact": "^10.26.4",
-    "split-type": "^0.3.4"
+    "astro": "^4.16.18"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.17",
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.64.1",
     "typescript": "^5.7.2"
   }
 }

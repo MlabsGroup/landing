@@ -1,10 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import HeaderNav from '../../components/HeaderNav.astro';
-import HeroSection from '../../components/HeroSection.astro';
-import ShowcaseSection from '../../components/ShowcaseSection.astro';
-import HoldingCards from '../../components/HoldingCards.astro';
-import { LANGS, copy, isValidLang, type Lang } from '../../i18n/content';
+import { LANGS, company, copy, isValidLang, type Lang } from '../../i18n/content';
 
 export const prerender = true;
 
@@ -20,144 +16,367 @@ if (!isValidLang(rawLang)) {
 
 const lang = rawLang as Lang;
 const t = copy[lang];
+const tab = t.tabs.investor;
 ---
 
-<Layout lang={lang} title={t.siteTitle} description={t.siteDescription} languageLabel={t.languageLabel}>
-  <HeaderNav
-    lang={lang}
-    navVision={t.navVision}
-    navHow={t.navHow}
-    navOpportunities={t.navOpportunities}
-    navCredibility={t.navCredibility}
-    navContact={t.navContact}
-    ctaLabel={t.headerCta}
-  />
-
-  <HeroSection
-    eyebrow={t.eyebrow}
-    title={t.heroTitle}
-    subtitle={t.heroSubtitle}
-    primaryButton={t.heroPrimaryButton}
-    secondaryButton={t.heroSecondaryButton}
-    visualAlt={t.heroVisualAlt}
-  />
-
-  <section id="vision" class="py-24 md:py-28" data-section>
-    <div class="mx-auto max-w-7xl px-6 md:px-10">
-      <div
-        class="glass-premium with-border-beam relative overflow-hidden rounded-3xl border border-blue-200/50 p-8 shadow-glow-lg md:p-12"
-        data-reveal
-      >
-        <div class="pointer-events-none absolute -right-10 -top-10 h-36 w-36 rounded-full bg-white/20 blur-3xl"></div>
-        <p class="section-kicker">{t.visionTitle}</p>
-        <h2 class="section-title mt-4 max-w-4xl">{t.visionText}</h2>
-      </div>
-    </div>
-  </section>
-
-  <section id="how" class="py-24 md:py-28" data-section>
-    <div class="mx-auto max-w-7xl px-6 md:px-10">
-      <div class="max-w-3xl" data-reveal>
-        <p class="section-kicker">MLABS Platform</p>
-        <h2 class="section-title mt-4">{t.howTitle}</h2>
+<Layout lang={lang} title={t.siteTitle} description={t.siteDescription}>
+  <!-- HERO -->
+  <section class="wrap hero">
+    <div class="hero-grid">
+      <div class="hero-main">
+        <div class="kicker eyebrow"><span class="dot"></span>{t.eyebrow}</div>
+        <h1 class="display">{t.heroTitle}<span class="accent">{t.heroTitleAccent}</span></h1>
+        <p class="hero-text">{t.heroText}</p>
       </div>
 
-      <ol class="mt-12 grid grid-cols-1 gap-5 md:grid-cols-3" role="list">
+      <div class="hero-panel">
+        <div class="hero-panel-head">
+          <span>{t.heroPanelTitle}</span>
+          <span class="live">Live</span>
+        </div>
         {
-          t.howItems.map((item, index) => (
-            <li
-              class="glass-card with-border-beam rounded-2xl border border-blue-200/40 p-7 text-sm leading-relaxed text-slate-700 shadow-glow md:text-base transition-all duration-300 hover:shadow-glow-lg"
-              data-reveal
-              data-tilt
-            >
-              <span class="mb-4 inline-flex h-8 w-8 items-center justify-center rounded-full border border-blue-300/50 bg-blue-50 text-xs font-medium text-blue-600">
-                {`0${index + 1}`}
-              </span>
-              <p>{item}</p>
-            </li>
+          t.heroRows.map((row) => (
+            <div class="hero-row">
+              <div>
+                <div class="hero-row-name">{row.name}</div>
+                <div class="hero-row-what">{row.what}</div>
+              </div>
+              <div class="hero-row-markets">{row.markets}</div>
+            </div>
           ))
         }
-      </ol>
+        <a href="#portfolio" class="hero-panel-link">
+          {t.heroPanelLink}
+          <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="doors">
+      {
+        t.doors.map((d) => (
+          <a href="#formulario" class="door" data-tab={d.tab}>
+            <span class="door-who">{d.who}</span>
+            <span class="door-verb">{d.verb}</span>
+            <span class="door-body">{d.body}</span>
+            <span class="door-cta">
+              {d.cta}
+              <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+            </span>
+          </a>
+        ))
+      }
     </div>
   </section>
 
-  <ShowcaseSection
-    kicker={t.showcaseKicker}
-    title={t.showcaseTitle}
-    text={t.showcaseText}
-    points={t.showcasePoints}
-    imageAlt={t.showcaseImageAlt}
-  />
+  <!-- STATS -->
+  <section class="dark">
+    <div class="wrap stats">
+      {
+        t.stats.map((s) => (
+          <div>
+            <div class="stat-value">{s.value}</div>
+            <div class="stat-label">{s.label}</div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
 
-  <HoldingCards
-    sectionId="opportunities"
-    title={t.holdingTitle}
-    intro={t.holdingIntro}
-    acquisitionTitle={t.acquisitionTitle}
-    acquisitionText={t.acquisitionText}
-    acquisitionButton={t.acquisitionButton}
-    juniorTitle={t.juniorTitle}
-    juniorText={t.juniorText}
-    juniorButton={t.juniorButton}
-  />
+  <!-- 01 VISIÓN -->
+  <section id="vision" class="wrap section">
+    <div class="split">
+      <div class="split-side kicker">{t.visionKicker}</div>
+      <div class="split-main">
+        <h2 class="vision-title">{t.visionTitle}</h2>
+        <p class="lead vision-text">{t.visionText}</p>
+      </div>
+    </div>
 
-  <section class="py-24 md:py-28" data-section>
-    <div class="mx-auto max-w-7xl px-6 md:px-10">
-      <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
-        <article class="glass-card rounded-2xl border border-white/20 p-7 shadow-[0_16px_55px_rgba(0,0,0,0.42)]" data-reveal data-tilt>
-          <h3 class="text-xl font-semibold text-white">{t.buildersTitle}</h3>
-          <p class="section-copy mt-4 text-sm md:text-base">{t.buildersText}</p>
-        </article>
-        <article class="glass-card rounded-2xl border border-white/20 p-7 shadow-[0_16px_55px_rgba(0,0,0,0.42)]" data-reveal data-tilt>
-          <h3 class="text-xl font-semibold text-white">{t.partnersTitle}</h3>
-          <p class="section-copy mt-4 text-sm md:text-base">{t.partnersText}</p>
-        </article>
-        <article class="glass-card rounded-2xl border border-white/20 p-7 shadow-[0_16px_55px_rgba(0,0,0,0.42)]" data-reveal data-tilt>
-          <h3 class="text-xl font-semibold text-white">{t.investorsTitle}</h3>
-          <p class="section-copy mt-4 text-sm md:text-base">{t.investorsText}</p>
-        </article>
+    <div class="how">
+      <div class="block-head">
+        <h3 class="display">{t.howTitle[0]}<br />{t.howTitle[1]}</h3>
+        <p>{t.howText}</p>
+      </div>
+      <div class="grid grid-260">
+        {
+          t.steps.map((s) => (
+            <div class="card step">
+              <div class="step-n">{s.n}</div>
+              <div class="step-title">{s.title}</div>
+              <div class="step-body">{s.body}</div>
+              <div class="step-gate">{s.gate}</div>
+            </div>
+          ))
+        }
       </div>
     </div>
   </section>
 
-  <section id="credibility" class="py-24 md:py-28" data-section>
-    <div class="mx-auto max-w-7xl px-6 md:px-10">
-      <div class="grid grid-cols-1 gap-8 md:grid-cols-12">
-        <div class="md:col-span-5" data-reveal>
-          <p class="section-kicker">MLABS Trust Layer</p>
-          <h2 class="section-title mt-4">{t.credibilityTitle}</h2>
+  <!-- MLABS CORE -->
+  <section class="core">
+    <div class="wrap">
+      <div class="core-intro">
+        <div class="kicker">MLabs Core</div>
+        <h3>{t.coreTitle}</h3>
+        <p>{t.coreText}</p>
+      </div>
+      <div class="core-grid">
+        {
+          t.core.map((c) => (
+            <div class="core-item">
+              <div class="item-title">{c.title}</div>
+              <div class="item-body">{c.body}</div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 QUIÉNES SOMOS -->
+  <section id="nosotros" class="wrap section">
+    <div class="split">
+      <div class="about-head">
+        <div class="kicker">{t.aboutKicker}</div>
+        <h2 class="display about-title">{t.aboutTitle}</h2>
+      </div>
+      <div class="about-text lead">
+        {t.aboutText.map((p) => <p>{p}</p>)}
+      </div>
+    </div>
+
+    <div class="grid grid-260 team">
+      {
+        t.team.map((m) => (
+          <div class="card member">
+            <div class="avatar" aria-hidden="true">{m.initials}</div>
+            <div>
+              <div class="member-name">{m.name}</div>
+              <div class="member-role">{m.role}</div>
+              <div class="item-body">{m.body}</div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="values">
+      {
+        t.values.map((v) => (
+          <div class="value">
+            <div class="item-title">{v.title}</div>
+            <div class="item-body">{v.body}</div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- 03 PORTFOLIO -->
+  <section id="portfolio" class="portfolio">
+    <div class="wrap section">
+      <div class="block-head">
+        <div>
+          <div class="kicker">{t.portfolioKicker}</div>
+          <h2 class="display">{t.portfolioTitle[0]}<br />{t.portfolioTitle[1]}</h2>
         </div>
-        <ul class="space-y-4 md:col-span-7" role="list">
+        <div role="group" aria-label={t.filterLabel} class="filters">
           {
-            t.credibilityItems.map((item) => (
-              <li
-                class="glass-card rounded-xl border border-blue-200/40 p-5 text-sm text-slate-700 shadow-glow md:text-base transition-all duration-300 hover:shadow-glow-lg"
-                data-reveal
-              >
-                {item}
-              </li>
+            t.filters.map((f) => (
+              <button type="button" class="pill" data-filter={f.id} aria-pressed={f.id === 'all' ? 'true' : 'false'}>
+                {f.label}
+              </button>
             ))
           }
-        </ul>
+        </div>
+      </div>
+      <div class="ventures">
+        {
+          t.ventures.map((v) => (
+            <article class="venture" data-group={v.group}>
+              <div class="venture-top">
+                <span class="badge">{v.status}</span>
+                <span class="venture-markets">{v.markets}</span>
+              </div>
+              <h3>{v.name}</h3>
+              <div class="venture-category">{v.category}</div>
+              <p>{v.body}</p>
+              <div class="venture-proof">{v.proof}</div>
+            </article>
+          ))
+        }
+      </div>
+      <p class="acq">{t.acqText} <a href="#formulario" data-tab="acquisition">{t.acqLink}</a></p>
+    </div>
+  </section>
+
+  <!-- 04 CONTACTO -->
+  <section id="contacto" class="contact dark">
+    <div class="wrap">
+      <div class="kicker">{t.contactKicker}</div>
+      <h2 class="display">{t.contactTitle}</h2>
+      <p class="contact-intro">{t.contactText}</p>
+
+      <div class="audiences">
+        {
+          t.audiences.map((a) => (
+            <div class="audience">
+              <div class="audience-who">{a.who}</div>
+              <div class="audience-title">{a.title}</div>
+              <div class="audience-body">{a.body}</div>
+              <ul>
+                {a.points.map((p) => (
+                  <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C8BBF7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg>
+                    <span>{p}</span>
+                  </li>
+                ))}
+              </ul>
+              <a href="#formulario" class="btn" data-tab={a.tab}>{a.cta}</a>
+            </div>
+          ))
+        }
       </div>
     </div>
   </section>
 
-  <section id="contact" class="py-24 md:py-32" data-section>
-    <div
-      class="glass-card with-border-beam mx-auto max-w-4xl rounded-3xl border border-white/20 px-6 py-14 text-center shadow-[0_22px_74px_rgba(0,0,0,0.45)] md:px-10"
-      data-reveal
-    >
-      <p class="section-kicker">MLABS</p>
-      <h2 class="section-title mt-4">{t.ctaTitle}</h2>
-      <p class="section-copy mx-auto mt-6 max-w-2xl">{t.ctaText}</p>
-      <a
-        href="mailto:tech@mlabsgroup.com?subject=MLABS%20-%20Contacto%20estrategico"
-        class="mt-10 inline-flex items-center rounded-full border border-white/20 bg-white px-7 py-3 text-sm font-semibold uppercase tracking-[0.12em] text-black transition hover:bg-white/92 focus-visible:ring-2 focus-visible:ring-white/85"
-        aria-label="Enviar correo para iniciar conversacion con MLABS"
-      >
-        {t.ctaButton}
-      </a>
+  <section id="formulario" class="form-section">
+    <div class="wrap">
+      <div class="form-intro">
+        <h3 class="display">{t.formTitle}</h3>
+        <p>{t.formText}</p>
+        <ul class="direct">
+          <li>
+            <div class="direct-label">{t.emailLabel}</div>
+            <a href={`mailto:${company.email}`}>{company.email}</a>
+          </li>
+          <li>
+            <div class="direct-label">{t.phoneLabel}</div>
+            <a href={company.phoneHref}>{company.phone}</a>
+          </li>
+          <li>
+            <div class="direct-label">{t.addressLabel}</div>
+            <span>{company.legalName}<br />{company.street}, {company.postalCode} {company.city}, {t.countryName}</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="form-card" data-contact data-email={company.email} data-tabs={JSON.stringify(t.tabs)}>
+        <div role="tablist" aria-label={t.formTabsLabel} class="tabs">
+          {
+            (Object.keys(t.tabs) as (keyof typeof t.tabs)[]).map((key) => (
+              <button type="button" role="tab" class="pill" data-tab-key={key} aria-selected={key === 'investor' ? 'true' : 'false'}>
+                {t.tabs[key].label}
+              </button>
+            ))
+          }
+        </div>
+
+        <form
+          data-form
+          action={`mailto:${company.email}`}
+          method="post"
+          enctype="text/plain"
+        >
+          <div class="form-title" data-slot="title">{tab.title}</div>
+          <div class="form-lead" data-slot="lead">{tab.lead}</div>
+          <div class="fields">
+            <label class="field">{t.fieldName}
+              <input type="text" name="nombre" autocomplete="name" required />
+            </label>
+            <label class="field">{t.fieldEmail}
+              <input type="email" name="email" autocomplete="email" required />
+            </label>
+            <label class="field"><span data-slot="orgLabel">{tab.orgLabel}</span>
+              <input type="text" name="organizacion" />
+            </label>
+            <label class="field">{t.fieldWeb}
+              <input type="text" name="web" />
+            </label>
+          </div>
+          <label class="field field-full"><span data-slot="msgLabel">{tab.msgLabel}</span>
+            <textarea name="mensaje" rows="4" required></textarea>
+          </label>
+          <button type="submit" class="submit" data-slot="cta">{tab.cta}</button>
+        </form>
+
+        <div class="sent" data-sent hidden>
+          <div class="sent-title">{t.formSentTitle}</div>
+          <p>{t.formSentText}</p>
+          <button type="button" data-reset>{t.formReset}</button>
+        </div>
+      </div>
     </div>
   </section>
 </Layout>
+
+<script>
+  // Filtro del portfolio
+  const filterButtons = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
+  const ventures = document.querySelectorAll<HTMLElement>('.venture');
+  filterButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter;
+      filterButtons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+      ventures.forEach((v) => {
+        v.hidden = filter !== 'all' && v.dataset.group !== filter;
+      });
+    });
+  });
+
+  // Formulario de contacto: pestañas por tipo de contacto y envío vía mailto
+  const card = document.querySelector<HTMLElement>('[data-contact]');
+  if (card) {
+    const tabs = JSON.parse(card.dataset.tabs ?? '{}') as Record<string, Record<string, string>>;
+    const email = card.dataset.email ?? '';
+    const form = card.querySelector<HTMLFormElement>('[data-form]')!;
+    const sent = card.querySelector<HTMLElement>('[data-sent]')!;
+    const tabButtons = card.querySelectorAll<HTMLButtonElement>('[data-tab-key]');
+    let active = 'investor';
+
+    const selectTab = (key: string) => {
+      if (!tabs[key]) return;
+      active = key;
+      tabButtons.forEach((b) => b.setAttribute('aria-selected', String(b.dataset.tabKey === key)));
+      form.querySelectorAll<HTMLElement>('[data-slot]').forEach((el) => {
+        el.textContent = tabs[key][el.dataset.slot!];
+      });
+      form.hidden = false;
+      sent.hidden = true;
+    };
+
+    tabButtons.forEach((b) => b.addEventListener('click', () => selectTab(b.dataset.tabKey!)));
+    document.querySelectorAll<HTMLElement>('a[data-tab]').forEach((a) => {
+      a.addEventListener('click', () => selectTab(a.dataset.tab!));
+    });
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const data = new FormData(form);
+      const tab = tabs[active];
+      const lines = [
+        `${tab.label}`,
+        '',
+        `Nombre / Name: ${data.get('nombre')}`,
+        `Email: ${data.get('email')}`,
+        `${tab.orgLabel}: ${data.get('organizacion')}`,
+        `LinkedIn / Web: ${data.get('web')}`,
+        '',
+        `${tab.msgLabel}`,
+        `${data.get('mensaje')}`,
+      ];
+      const subject = `MLABS · ${tab.title}`;
+      const mailto = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
+      form.dataset.mailto = mailto; // usado por los tests e2e
+      window.location.href = mailto;
+      form.hidden = true;
+      sent.hidden = false;
+    });
+
+    card.querySelector('[data-reset]')?.addEventListener('click', () => {
+      form.reset();
+      selectTab(active);
+    });
+  }
+</script>
