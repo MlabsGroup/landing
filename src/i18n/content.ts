@@ -127,9 +127,7 @@ export const copy: Record<Lang, LocalizedCopy> = {
     heroPanelLink: 'Ver el portfolio',
     heroRows: [
       { name: 'FichajeSimple', what: 'Control de empleados', markets: 'ES MX PT SI' },
-      { name: 'UNMI', what: 'Llamadas perdidas → ventas', markets: 'ES MX' },
       { name: 'GrowthShare', what: 'Partner OS', markets: 'ES IT PT MX' },
-      { name: 'Eclia', what: 'Comunidades', markets: 'ES' },
     ],
     doors: [
       { who: 'Para inversores', verb: 'Invierte', body: 'Ventures con clientes y producto, listas para acelerar sus ventas con capital.', cta: 'Solicitar el deck', tab: 'investor' },
@@ -193,9 +191,7 @@ export const copy: Record<Lang, LocalizedCopy> = {
     ],
     ventures: [
       { name: 'FichajeSimple', category: 'Control de empleados', status: 'Activa', group: 'active', markets: 'ES · MX · PT · SI', body: 'Registro de jornada y control de equipos para pequeñas empresas, con alta en menos de 5 minutos y panel gratuito para la gestoría del cliente. Marcas locales: RegistoPonto (PT) y urediure.si (SI).', proof: '29 clientes en México en dos semanas' },
-      { name: 'UNMI', category: 'Ingresos recuperados', status: 'Activa', group: 'active', markets: 'ES · MX', body: 'Convierte cada llamada perdida en una conversación de WhatsApp que acaba en cita, presupuesto o pago. Un mismo motor aplicable a cada fuga de dinero de un negocio de servicios.', proof: 'Meta Tech Provider · pagos con Stripe' },
       { name: 'GrowthShare', category: 'Partner OS', status: 'Activa', group: 'active', markets: 'ES · IT · PT · MX', body: 'Calcula, controla y liquida el dinero de una red comercial: comisiones multinivel, rappels, cobros y liquidaciones, liberando solo lo que ya se ha cobrado.', proof: 'Motor comercial de todas las ventures MLABS' },
-      { name: 'Eclia', category: 'Comunidades', status: 'Activa', group: 'active', markets: 'ES', body: 'Digitaliza parroquias y diócesis y une a la organización con su comunidad: comunicación, agenda y participación en una sola app.', proof: 'En expansión a organizaciones laicas' },
       { name: 'Control de rappels', category: 'Distribución mayorista', status: 'En validación', group: 'lab', markets: 'ES → IT · PT · MX', body: 'Lee los acuerdos con proveedores, calcula el rappel devengado y avisa al distribuidor de cuánto le falta para el siguiente tramo.', proof: 'Preventa abierta con distribuidores' },
       { name: 'Cobros sin fricción', category: 'Finanzas pyme', status: 'En validación', group: 'lab', markets: 'ES → MX · CO · IT', body: 'Recordatorios con enlace de pago y recuperación del IVA de facturas impagadas, sin perseguir al cliente a mano.', proof: 'Preventa abierta con despachos' },
     ],
@@ -253,9 +249,7 @@ export const copy: Record<Lang, LocalizedCopy> = {
     heroPanelLink: 'See the portfolio',
     heroRows: [
       { name: 'FichajeSimple', what: 'Workforce time tracking', markets: 'ES MX PT SI' },
-      { name: 'UNMI', what: 'Missed calls → sales', markets: 'ES MX' },
       { name: 'GrowthShare', what: 'Partner OS', markets: 'ES IT PT MX' },
-      { name: 'Eclia', what: 'Communities', markets: 'ES' },
     ],
     doors: [
       { who: 'For investors', verb: 'Invest', body: 'Ventures with customers and product, ready to accelerate sales with capital.', cta: 'Request the deck', tab: 'investor' },
@@ -319,9 +313,7 @@ export const copy: Record<Lang, LocalizedCopy> = {
     ],
     ventures: [
       { name: 'FichajeSimple', category: 'Workforce time tracking', status: 'Active', group: 'active', markets: 'ES · MX · PT · SI', body: 'Time tracking and team management for small businesses, with sign-up in under 5 minutes and a free dashboard for the customer’s accountant. Local brands: RegistoPonto (PT) and urediure.si (SI).', proof: '29 customers in Mexico in two weeks' },
-      { name: 'UNMI', category: 'Recovered revenue', status: 'Active', group: 'active', markets: 'ES · MX', body: 'Turns every missed call into a WhatsApp conversation that ends in a booking, a quote or a payment. One engine for every revenue leak in a service business.', proof: 'Meta Tech Provider · Stripe payments' },
       { name: 'GrowthShare', category: 'Partner OS', status: 'Active', group: 'active', markets: 'ES · IT · PT · MX', body: 'Calculates, controls and settles a sales network’s money: multi-level commissions, rebates, collections and payouts, releasing only what has already been collected.', proof: 'Sales engine of every MLABS venture' },
-      { name: 'Eclia', category: 'Communities', status: 'Active', group: 'active', markets: 'ES', body: 'Digitizes parishes and dioceses and connects the organization with its community: communication, calendar and participation in a single app.', proof: 'Expanding to lay organizations' },
       { name: 'Rebate control', category: 'Wholesale distribution', status: 'In validation', group: 'lab', markets: 'ES → IT · PT · MX', body: 'Reads supplier agreements, calculates the accrued rebate and tells the distributor how far they are from the next tier.', proof: 'Pre-sales open with distributors' },
       { name: 'Frictionless collections', category: 'SMB finance', status: 'In validation', group: 'lab', markets: 'ES → MX · CO · IT', body: 'Reminders with a payment link and VAT recovery on unpaid invoices, without chasing customers by hand.', proof: 'Pre-sales open with accounting firms' },
     ],
