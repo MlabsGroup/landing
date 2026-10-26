@@ -52,11 +52,19 @@ test.describe('Carga y datos de empresa', () => {
     await expect(page.locator('#privacidad')).toContainText('Agencia Española de Protección de Datos');
   });
 
-  test('no se mencionan ventures confidenciales', async ({ request }) => {
-    for (const path of PAGES) {
-      const html = await (await request.get(path)).text();
-      expect(html, path).not.toMatch(/unmi|eclia/i);
+  test('UNMI y Eclia aparecen solo con su frase corta, sin detalles', async ({ page }) => {
+    await page.goto('/es/');
+    for (const [name, line] of [
+      ['UNMI', 'Gestión inteligente de llamadas perdidas. Ninguna llamada sin respuesta, ninguna oportunidad de venta perdida.'],
+      ['Eclia', 'App móvil para digitalizar el mundo cristiano. Una sola app que une a cada comunidad con su organización.'],
+    ]) {
+      const card = page.locator('.venture', { has: page.getByRole('heading', { name, exact: true }) });
+      await expect(card.locator('p')).toHaveText(line);
+      await expect(card.locator('.venture-markets, .venture-category, .venture-proof')).toHaveCount(0);
     }
+    // Ningún dato de las descripciones antiguas
+    const html = await page.content();
+    expect(html).not.toMatch(/WhatsApp que acaba|parroquias|diócesis|organizaciones laicas/);
   });
 
   test('la raíz redirige a /es/', async ({ page }) => {
@@ -100,7 +108,7 @@ test.describe('Portfolio', () => {
     await page.goto('/es/');
     const cards = page.locator('.venture');
     const visible = page.locator('.venture:visible');
-    await expect(cards).toHaveCount(4);
+    await expect(cards).toHaveCount(6);
 
     await page.getByRole('button', { name: 'En validación' }).click();
     await expect(visible).toHaveCount(2);
@@ -108,10 +116,10 @@ test.describe('Portfolio', () => {
     await expect(page.getByRole('button', { name: 'Todo' })).toHaveAttribute('aria-pressed', 'false');
 
     await page.getByRole('button', { name: 'Ventures activas' }).click();
-    await expect(visible).toHaveCount(2);
+    await expect(visible).toHaveCount(4);
 
     await page.getByRole('button', { name: 'Todo' }).click();
-    await expect(visible).toHaveCount(4);
+    await expect(visible).toHaveCount(6);
   });
 });
 

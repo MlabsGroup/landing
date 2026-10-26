@@ -41,7 +41,7 @@ const tab = t.tabs.investor;
                 <div class="hero-row-name">{row.name}</div>
                 <div class="hero-row-what">{row.what}</div>
               </div>
-              <div class="hero-row-markets">{row.markets}</div>
+              {row.markets && <div class="hero-row-markets">{row.markets}</div>}
             </div>
           ))
         }
@@ -197,12 +197,12 @@ const tab = t.tabs.investor;
             <article class="venture" data-group={v.group}>
               <div class="venture-top">
                 <span class="badge">{v.status}</span>
-                <span class="venture-markets">{v.markets}</span>
+                {v.markets && <span class="venture-markets">{v.markets}</span>}
               </div>
               <h3>{v.name}</h3>
-              <div class="venture-category">{v.category}</div>
+              {v.category && <div class="venture-category">{v.category}</div>}
               <p>{v.body}</p>
-              <div class="venture-proof">{v.proof}</div>
+              {v.proof && <div class="venture-proof">{v.proof}</div>}
             </article>
           ))
         }
