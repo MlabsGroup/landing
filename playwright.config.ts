@@ -20,6 +20,6 @@ export default defineConfig({
     command: `npm run build && npx astro preview --port ${PORT}`,
     url: `http://localhost:${PORT}/es/`,
     reuseExistingServer: !process.env.CI,
-    timeout: 120_000,
+    timeout: 240_000,
   },
 });
