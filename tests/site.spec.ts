@@ -55,8 +55,8 @@ test.describe('Carga y datos de empresa', () => {
   test('UNMI y Eclia aparecen solo con su frase corta, sin detalles', async ({ page }) => {
     await page.goto('/es/');
     for (const [name, line] of [
-      ['UNMI', 'Gestión inteligente de llamadas perdidas.'],
-      ['Eclia', 'App móvil para digitalizar el mundo cristiano.'],
+      ['UNMI', 'Gestión inteligente de llamadas perdidas. Ninguna llamada sin respuesta, ninguna oportunidad de venta perdida.'],
+      ['Eclia', 'App móvil para digitalizar el mundo cristiano. Una sola app que une a cada comunidad con su organización.'],
     ]) {
       const card = page.locator('.venture', { has: page.getByRole('heading', { name, exact: true }) });
       await expect(card.locator('p')).toHaveText(line);

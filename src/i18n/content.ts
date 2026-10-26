@@ -193,9 +193,9 @@ export const copy: Record<Lang, LocalizedCopy> = {
     ],
     ventures: [
       { name: 'FichajeSimple', category: 'Control de empleados', status: 'Activa', group: 'active', markets: 'ES · MX · PT · SI', body: 'Registro de jornada y control de equipos para pequeñas empresas, con alta en menos de 5 minutos y panel gratuito para la gestoría del cliente. Marcas locales: RegistoPonto (PT) y urediure.si (SI).', proof: '29 clientes en México en dos semanas' },
-      { name: 'UNMI', status: 'Activa', group: 'active', body: 'Gestión inteligente de llamadas perdidas.' },
+      { name: 'UNMI', status: 'Activa', group: 'active', body: 'Gestión inteligente de llamadas perdidas. Ninguna llamada sin respuesta, ninguna oportunidad de venta perdida.' },
       { name: 'GrowthShare', category: 'Partner OS', status: 'Activa', group: 'active', markets: 'ES · IT · PT · MX', body: 'Calcula, controla y liquida el dinero de una red comercial: comisiones multinivel, rappels, cobros y liquidaciones, liberando solo lo que ya se ha cobrado.', proof: 'Motor comercial de todas las ventures MLABS' },
-      { name: 'Eclia', status: 'Activa', group: 'active', body: 'App móvil para digitalizar el mundo cristiano.' },
+      { name: 'Eclia', status: 'Activa', group: 'active', body: 'App móvil para digitalizar el mundo cristiano. Una sola app que une a cada comunidad con su organización.' },
       { name: 'Control de rappels', category: 'Distribución mayorista', status: 'En validación', group: 'lab', markets: 'ES → IT · PT · MX', body: 'Lee los acuerdos con proveedores, calcula el rappel devengado y avisa al distribuidor de cuánto le falta para el siguiente tramo.', proof: 'Preventa abierta con distribuidores' },
       { name: 'Cobros sin fricción', category: 'Finanzas pyme', status: 'En validación', group: 'lab', markets: 'ES → MX · CO · IT', body: 'Recordatorios con enlace de pago y recuperación del IVA de facturas impagadas, sin perseguir al cliente a mano.', proof: 'Preventa abierta con despachos' },
     ],
@@ -319,9 +319,9 @@ export const copy: Record<Lang, LocalizedCopy> = {
     ],
     ventures: [
       { name: 'FichajeSimple', category: 'Workforce time tracking', status: 'Active', group: 'active', markets: 'ES · MX · PT · SI', body: 'Time tracking and team management for small businesses, with sign-up in under 5 minutes and a free dashboard for the customer’s accountant. Local brands: RegistoPonto (PT) and urediure.si (SI).', proof: '29 customers in Mexico in two weeks' },
-      { name: 'UNMI', status: 'Active', group: 'active', body: 'Smart missed-call management.' },
+      { name: 'UNMI', status: 'Active', group: 'active', body: 'Smart missed-call management. No call left unanswered, no sales opportunity lost.' },
       { name: 'GrowthShare', category: 'Partner OS', status: 'Active', group: 'active', markets: 'ES · IT · PT · MX', body: 'Calculates, controls and settles a sales network’s money: multi-level commissions, rebates, collections and payouts, releasing only what has already been collected.', proof: 'Sales engine of every MLABS venture' },
-      { name: 'Eclia', status: 'Active', group: 'active', body: 'Mobile app to digitize the Christian world.' },
+      { name: 'Eclia', status: 'Active', group: 'active', body: 'Mobile app to digitize the Christian world. A single app that connects each community with its organization.' },
       { name: 'Rebate control', category: 'Wholesale distribution', status: 'In validation', group: 'lab', markets: 'ES → IT · PT · MX', body: 'Reads supplier agreements, calculates the accrued rebate and tells the distributor how far they are from the next tier.', proof: 'Pre-sales open with distributors' },
       { name: 'Frictionless collections', category: 'SMB finance', status: 'In validation', group: 'lab', markets: 'ES → MX · CO · IT', body: 'Reminders with a payment link and VAT recovery on unpaid invoices, without chasing customers by hand.', proof: 'Pre-sales open with accounting firms' },
     ],
